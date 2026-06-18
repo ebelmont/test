@@ -1,0 +1,514 @@
+%% Actual formatting
+\parskip=0.2in \parindent=0in
+\allowdisplaybreaks % Allow align environments to split over page breaks
+\raggedbottom % Don't leave awkward spaces in the middle of pages
+
+
+% From Atanas Atanasov: \replacecommand is similar to \providecommand but it initializes the command as necessary even if a previous definition exists.
+\newcommand*{\replacecommand}[1]{%
+  \providecommand{#1}{}%
+  \renewcommand{#1}%
+}
+
+\renewcommand{\arraystretch}{1.5}
+
+
+%% Miscellaneous \newcommand's
+\renewcommand{\l}{\overset}
+\newcommand{\into}{\hookrightarrow}
+\newcommand{\onto}{\twoheadrightarrow}
+\newcommand{\tto}{\longrightarrow}
+\newcommand{\too}[1]{\overset{#1}\to}
+\newcommand{\ttoo}[1]{\overset{#1}\longrightarrow}
+\newcommand{\intoo}[1]{\overset{#1}\into}
+\newcommand{\ontoo}[1]{\overset{#1}\onto}
+\newcommand{\mapstoo}[1]{\overset{#1}\mapsto}
+\newcommand{\bto}{\leftarrow}
+\newcommand{\btto}{\longleftarrow}
+\newcommand{\btoo}[1]{\overset{#1}\bto}
+\newcommand{\bttoo}[1]{\overset{#1}\longleftarrow}
+\newcommand{\binto}{\hookleftarrow}
+\newcommand{\bonto}{\twoheadleftarrow}
+\newcommand{\bintoo}[1]{\overset{#1}\binto}
+\newcommand{\bontoo}[1]{\overset{#1}\bonto}
+% stupid hack to get the open immersion symbol; see http://tex.stackexchange.com/questions/66723/nudging-overset-characters-downwards
+\newcommand{\ointo}{\hspace{3pt}\text{\raisebox{-1.5pt}{$\overset{\circ}{\vphantom{}\smash{\text{\raisebox{1.5pt}{$\into$}}}}$}}\hspace{3pt}}
+\newcommand{\lu}{\underset}
+\newcommand{\bimplies}{\impliedby}
+\newcommand{\ints}{\cap}
+\newcommand{\intss}{\bigcap}
+\newcommand{\union}{\cup}
+\newcommand{\unions}{\bigcup}
+\newcommand{\djunion}{\sqcup}
+\newcommand{\djunions}{\bigsqcup}
+\newcommand{\propersubset}{\subsetneq}
+\newcommand{\propersupset}{\supsetneq}
+\newcommand{\contains}{\supseteq}
+\newcommand{\semidirect}{\rtimes}
+\newcommand{\isom}{\cong}
+\newcommand{\normal}{\triangleleft}
+\replacecommand{\dsum}{\oplus}
+\newcommand{\dsums}{\bigoplus}
+\newcommand{\tensor}{\otimes}
+\newcommand{\tensors}{\bigotimes}
+\newcommand{\cotensor}{{\,\scriptstyle\square}}
+\let\originalbar\bar
+\renewcommand{\bar}[1]{{\overline{#1}}}
+\newcommand{\rlim}{\mathop{\varinjlim}\limits}
+\newcommand{\llim}{\mathop{\varprojlim}\limits}
+\newcommand{\x}{\times}
+\replacecommand{\st}{\hspace{2pt} : \hspace{2pt}} % used to be \providecommand
+\newcommand{\vv}{\vspace{10pt}}
+\newcommand{\til}{\widetilde}
+\renewcommand{\hat}{\widehat}
+\newcommand{\hhat}{\wedge}
+\newcommand{\iy}{\infty}
+\newcommand{\hteq}{\simeq}
+\newcommand{\dd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\sm}{\wedge} % stop getting confused about the word "wedge"
+\newcommand{\noqed}{\renewcommand{\qedsymbol}{}}
+\newcommand{\adjoint}{\dashv}
+\newcommand{\wreath}{\wr}
+\newcommand{\heart}{\heartsuit}
+
+%http://tex.stackexchange.com/questions/23432/how-to-create-my-own-math-operator-with-limits
+\newcommand{\bigast}{\mathop{\vphantom{\sum}\mathchoice%
+  {\vcenter{\hbox{\huge *}}}
+  {\vcenter{\hbox{\Large *}}}{*}{*}}\displaylimits}
+
+
+%% \operatorname
+\renewcommand{\dim}{\operatorname{dim}}
+\newcommand{\diam}{\operatorname{diam}}
+\newcommand{\coker}{\operatorname{coker}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\disc}{\operatorname{disc}}
+\newcommand{\Pic}{\operatorname{Pic}}
+\newcommand{\Der}{\operatorname{Der}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\nil}{\operatorname{nil}}
+\newcommand{\rad}{\operatorname{rad}}
+\newcommand{\ssum}{\operatorname{sum}}
+\newcommand{\codim}{\operatorname{codim}}
+\newcommand{\cchar}{\operatorname{char}}
+\newcommand{\sspan}{\operatorname{span}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\Out}{\operatorname{Out}}
+\newcommand{\Div}{\operatorname{Div}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Mor}{\operatorname{Mor}}
+\newcommand{\Vect}{\operatorname{Vect}}
+\newcommand{\Fun}{\operatorname{Fun}}
+\newcommand{\Iso}{\operatorname{Iso}}
+\newcommand{\Map}{\operatorname{Map}}
+\newcommand{\Ho}{\operatorname{Ho}}
+\newcommand{\Mod}{\operatorname{Mod}}
+\newcommand{\Tot}{\operatorname{Tot}}
+\newcommand{\cofib}{\operatorname{cofib}}
+\newcommand{\fib}{\operatorname{fib}}
+\newcommand{\hocofib}{\operatorname{hocofib}}
+\newcommand{\hofib}{\operatorname{hofib}}
+\newcommand{\Maps}{\operatorname{Maps}}
+\newcommand{\Sym}{\operatorname{Sym}}
+\newcommand{\Diff}{\operatorname{Diff}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Frac}{\operatorname{Frac}}
+\renewcommand{\Re}{\operatorname{Re}} % don't like the curly default ones
+\renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\gr}{{\operatorname{gr}}}
+\newcommand{\tr}{\operatorname{tr}}
+%\newcommand{\colim}{\operatorname{colim}}
+\newcommand{\End}{\operatorname{End}}
+\newcommand{\Mat}{\operatorname{Mat}}
+\newcommand{\Proj}{\operatorname{Proj}}
+\newcommand{\Th}{\operatorname{Thom}}
+\newcommand{\Thom}{\operatorname{Thom}}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\Ext}{\operatorname{Ext}}
+\newcommand{\Cotor}{\operatorname{Cotor}}
+\newcommand{\Tor}{\operatorname{Tor}}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\Id}{\operatorname{Id}}
+
+%% new operatornames since preamble8
+\newcommand{\Set}{\operatorname{Set}}
+\newcommand{\Top}{\operatorname{Top}}
+\newcommand{\Fin}{\operatorname{Fin}}
+\newcommand{\Spaces}{\operatorname{Spaces}}
+\newcommand{\Sp}{\operatorname{Sp}}
+\newcommand{\Spectra}{\operatorname{Spectra}}
+\newcommand{\Spt}{\operatorname{Spt}}
+\newcommand{\Comod}{\operatorname{Comod}}
+\newcommand{\Spf}{\operatorname{Spf}}
+\newcommand{\tmf}{\mathit{tmf}}
+\newcommand{\Tmf}{\mathit{Tmf}}
+\newcommand{\TMF}{\mathit{TMF}}
+\newcommand{\Null}{\operatorname{Null}}
+\newcommand{\Fil}{\operatorname{Fil}}
+\newcommand{\Sq}{\operatorname{Sq}}
+\newcommand{\Stable}{\operatorname{Stable}}
+\newcommand{\Poly}{\operatorname{Poly}}
+\newcommand{\Cat}{\operatorname{Cat}}
+\newcommand{\Orb}{\operatorname{Orb}}
+\newcommand{\Exc}{\operatorname{Exc}}
+\newcommand{\Part}{\operatorname{Part}}
+\newcommand{\Comm}{\operatorname{Comm}}
+\newcommand{\Res}{\operatorname{Res}}
+\newcommand{\Thick}{\operatorname{Thick}}
+\newcommand{\red}{{\operatorname{red}}}
+\providecommand{\SH}{\mathrm{SH}}
+\providecommand{\fil}{{\mathrm{fil}}}
+
+\newcommand{\mmf}{\mathit{mmf}}
+\newcommand{\Sm}{\operatorname{Sm}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\Frob}{\operatorname{Frob}}
+\newcommand{\Rep}{\operatorname{Rep}}
+\newcommand{\Ch}{\operatorname{Ch}}
+\newcommand{\Shv}{\operatorname{Shv}}
+\newcommand{\Corr}{\operatorname{Corr}}
+\newcommand{\Span}{\operatorname{Span}}
+\newcommand{\Sch}{\operatorname{Sch}}
+\newcommand{\ev}{\operatorname{ev}}
+\newcommand{\Homog}{\operatorname{Homog}}
+\newcommand{\conn}{\operatorname{conn}}
+\newcommand{\type}{\operatorname{type}}
+\newcommand{\num}{\operatorname{num}}
+\newcommand{\Aff}{\operatorname{Aff}}
+\newcommand{\Psh}{\operatorname{Psh}}
+\newcommand{\sk}{\operatorname{sk}}
+\newcommand{\cosk}{\operatorname{cosk}}
+\newcommand{\Cart}{\operatorname{Cart}}
+
+\newcommand{\Br}{\operatorname{Br}}
+\newcommand{\BW}{\operatorname{BW}}
+\newcommand{\Cl}{\operatorname{Cl}}
+\newcommand{\Conf}{\operatorname{Conf}}
+\newcommand{\Alg}{\operatorname{Alg}}
+\newcommand{\CAlg}{\operatorname{CAlg}}
+\newcommand{\Lie}{\operatorname{Lie}}
+\newcommand{\Coalg}{\operatorname{Coalg}}
+\newcommand{\Ab}{\operatorname{Ab}}
+\newcommand{\Ind}{\operatorname{Ind}}
+\newcommand{\ind}{\operatorname{ind}}
+\newcommand{\Fix}{\operatorname{Fix}}
+\newcommand{\ho}{\operatorname{ho}}
+\newcommand{\coeq}{\operatorname{coeq}}
+\newcommand{\CMon}{\operatorname{CMon}}
+\newcommand{\Sing}{\operatorname{Sing}}
+\newcommand{\Inj}{\operatorname{Inj}}
+\newcommand{\StMod}{\operatorname{StMod}}
+\newcommand{\Loc}{\operatorname{Loc}}
+\newcommand{\Free}{\operatorname{Free}}
+\newcommand{\Art}{\operatorname{Art}}
+\newcommand{\Gpd}{\operatorname{Gpd}}
+\newcommand{\Def}{\operatorname{Def}}
+\newcommand{\Hyp}{\operatorname{Hyp}}
+\newcommand{\Pre}{\operatorname{Pre}}
+\newcommand{\Lat}{\operatorname{Lat}}
+\newcommand{\Coords}{\operatorname{Coords}}
+\newcommand{\cone}{\operatorname{cone}}
+\newcommand{\Spc}{\operatorname{Spc}}
+\newcommand{\QCoh}{\operatorname{QCoh}}
+\newcommand{\height}{\operatorname{ht}}
+\newcommand{\Sub}{\operatorname{Sub}}
+\newcommand{\Cone}{\operatorname{Cone}}
+\newcommand{\Cocone}{\operatorname{Cocone}}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Lan}{\operatorname{Lan}}
+\newcommand{\LieAlg}{\operatorname{LieAlg}}
+\newcommand{\Com}{\operatorname{Com}}
+\newcommand{\CoAlg}{\operatorname{CoAlg}}
+\newcommand{\Prim}{\operatorname{Prim}}
+\newcommand{\Coh}{\operatorname{Coh}}
+\newcommand{\FormalGrp}{\operatorname{FormalGrp}}
+\newcommand{\Fact}{\operatorname{Fact}}
+\renewcommand{\Bar}{\operatorname{Bar}}
+\newcommand{\Cobar}{\operatorname{Cobar}}
+\newcommand{\Ad}{\operatorname{Ad}}
+\newcommand{\Moduli}{\operatorname{Moduli}}
+\newcommand{\dgla}{\operatorname{dgla}}
+\newcommand{\obl}{\operatorname{obl}}
+\newcommand{\ob}{\operatorname{ob}}
+\newcommand{\IndCoh}{\operatorname{IndCoh}}
+\newcommand{\Cocomm}{\operatorname{Cocomm}}
+\newcommand{\PreStk}{\operatorname{PreStk}}
+\newcommand{\FormGrp}{\operatorname{FormGrp}}
+\newcommand{\FormMod}{\operatorname{FormMod}}
+\newcommand{\Grp}{\operatorname{Grp}}
+\newcommand{\CommAlg}{\operatorname{CommAlg}}
+\newcommand{\CoComm}{\operatorname{CoComm}}
+\newcommand{\IndSch}{\operatorname{IndSch}}
+\newcommand{\Dist}{\operatorname{Dist}}
+\newcommand{\Triv}{\operatorname{Triv}}
+\newcommand{\Oper}{\operatorname{Oper}}
+\newcommand{\Bij}{\operatorname{Bij}}
+\newcommand{\Syl}{\operatorname{Syl}}
+\newcommand{\Inn}{\operatorname{Inn}}
+\newcommand{\Emb}{\operatorname{Emb}}
+\newcommand{\Gr}{\operatorname{Gr}}
+\newcommand{\CRing}{\operatorname{CRing}}
+\newcommand{\sSet}{\operatorname{sSet}}
+\newcommand{\et}{\text{\'et}}
+\newcommand{\Sh}{\operatorname{Sh}}
+\newcommand{\Nil}{\operatorname{Nil}}
+\newcommand{\Cech}{\v Cech}
+\newcommand{\Stacks}{\operatorname{Stacks}}
+\newcommand{\Pin}{\operatorname{Pin}}
+\newcommand{\sgn}{\operatorname{sgn}}
+%END
+
+
+
+%% \A etc.
+\newcommand{\A}{\mathbb{A}}
+\replacecommand{\C}{\mathbb{C}}
+\newcommand{\CP}{\mathbb{C}\mathrm{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\replacecommand{\G}{\mathbb{G}}
+\renewcommand{\H}{\mathbb{H}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\M}{\mathbb{M}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\RP}{\mathbb{R}\mathrm{P}}
+\newcommand{\V}{\vee}
+\newcommand{\T}{\mathbb{T}}
+\providecommand{\U}{\mathscr{U}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\e}{\mathfrak{g}}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\n}{\mathfrak{n}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\q}{\mathfrak{q}}
+\renewcommand{\t}{\mathfrak{t}}
+
+
+
+%% Large parentheses, etc.
+\newcommand{\pa}[1]{\left( {#1} \right)}
+\newcommand{\br}[1]{\left[ {#1} \right]}
+\newcommand{\cu}[1]{\left\{ {#1} \right\}}
+\newcommand{\ab}[1]{\left| {#1} \right|}
+\newcommand{\an}[1]{\left\langle {#1}\right\rangle}
+\newcommand{\fl}[1]{\left\lfloor {#1}\right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil {#1}\right\rceil}
+\newcommand{\tf}[1]{{\textstyle{#1}}}
+\newcommand{\patf}[1]{\pa{\textstyle{#1}}}
+
+
+
+%% Weird constructions
+\renewcommand{\mp}{\ \raisebox{5pt}{\text{\rotatebox{180}{$\pm$}}}\ }
+\renewcommand{\d}[1]{\ss \mathrm{d}#1}
+\newcommand{\imod}{\hspace{-7pt}\pmod}
+%\renewcommand{\check}[1]{\overset{\smile}{#1}}
+
+
+
+%% Better versions of existing commands
+\renewcommand{\epsilon}{\varepsilon}
+\let\originalphi=\phi
+\renewcommand{\phi}{{\mathchoice{\raisebox{2pt}{\ensuremath\varphi}}{\raisebox{2pt}{\!\! \ensuremath\varphi}}{\raisebox{1pt}{\scriptsize$\varphi$}}{\varphi}}}
+\newcommand{\ph}{{\color{white}.\!}}
+\newcommand{\tspacer}{{\ensuremath{\color{white}\Big|\!}}}
+\newcommand{\chii}{\raisebox{2pt}{\ensuremath\chi}}
+
+% from http://mbork.pl/2009-04-27_Fun_with_quantifiers_%28en%29
+\let\originalchi=\chi
+\renewcommand{\chi}{{\!{\mathchoice{\raisebox{2pt}{
+$\originalchi$}}{\!\raisebox{2pt}{
+$\originalchi$}}{\raisebox{1pt}{\scriptsize$\originalchi$}}{\originalchi}}}}
+
+\let\originalforall=\forall
+\renewcommand{\forall}{\ \originalforall}
+
+\let\originalexists=\exists
+\renewcommand{\exists}{\ \originalexists}
+
+\let\realcheck\check
+\newcommand{\vH}{\realcheck{H}}
+
+
+
+% quote block: \begin{qu}{leftmargin}{rightmargin}{  ...  }
+\newenvironment{qu}[2]
+{\begin{list}{}
+	  {\setlength\leftmargin{#1}
+	  \setlength\rightmargin{#2}}
+	  \item[]\footnotesize}
+		  {\end{list}}
+
+
+\newenvironment{titleblock}
+{\begin{mdframed}[linecolor=black!20,backgroundcolor=black!15]\begin{center}}
+{\end{center}\end{mdframed}}
+
+\newenvironment{shadedblock}[1][5in]
+{\bigskip\begin{mdframed}[align=center,userdefinedwidth=#1,linecolor=white,backgroundcolor=black!5]}{\end{mdframed}}
+
+\newenvironment{shadedtitleblock}[2][5in]
+{\begin{mdframed}[align=center,userdefinedwidth=#1,linecolor=white,backgroundcolor=black!15]\sc #2\end{mdframed}\begin{mdframed}[align=center,userdefinedwidth=#1,linecolor=white,backgroundcolor=black!5]}{\end{mdframed}}
+
+\newcommand{\shadedheader}[1]{\vspace{25pt}\begin{mdframed}[linecolor=black!20,backgroundcolor=black!5]\sc #1\end{mdframed}\vspace{10pt}}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%% newcommands that require certain packages
+
+\newcommand{\itext}{\shortintertext} % requires mathtools
+\makeatletter
+\@ifundefined{resetu}{ % revert to \u as text accent by defining \resetu
+	\renewcommand{\u}{\underbracket[0.7pt]} % requires mathtools
+}
+\makeatother
+\makeatletter
+\@ifundefined{resetO}{ % revert to \O as text accent by defining \resetO
+	\renewcommand{\O}{\mathcal{O}}
+}
+\makeatother
+\makeatletter
+\@ifundefined{resetk}{ % revert to \O as text accent by defining \resetO
+	\renewcommand{\k}{\Bbbk}
+}
+\makeatother
+
+
+
+%%%%%%%%%%%%%%%%%%%%
+
+% Colors
+% Now this preamble doesn't cause errors when there is no \usepackage{color}
+% (you just can't use these commands)
+\makeatletter
+%\@ifundefined{mathds}{
+%	\newcommand{\Id}{Id}
+%	}{
+%	\newcommand{\Id}{\mathds{1}} % requires mathds
+%	}
+\@ifundefined{sethlcolor}{
+	\newcommand{\fixmehl}[2]{\underline{#1}\marginpar{\raggedright\smaller\smaller #2}}
+	}{\@ifundefined{marginnote}{
+		\newcommand{\highlight}[1]{\ifmmode{\text{\sethlcolor{llgray}\hl{$#1$}}}\else{\sethlcolor{llred}\hl{#1}}\fi}
+		\newcommand{\fixmehl}[2]{\highlight{#1}\marginpar{\raggedright\smaller\smaller\color{maroon} #2}}
+		}{
+		\newcommand{\highlight}[1]{\ifmmode{\text{\sethlcolor{llgray}\hl{$#1$}}}\else{\sethlcolor{llred}\hl{#1}}\fi}
+		\newcommand{\fixmehl}[2]{\marginnote{\smaller \smaller\color{maroon} #2}{\highlight{#1}}}
+		}
+	}
+\@ifundefined{xy}{}{
+	\SelectTips{cm}{10}  % Better arrowheads
+}
+\@ifundefined{color}{}{
+	\definecolor{darkgreen}{RGB}{0,70,0}
+	\definecolor{dgreen}{RGB}{0,100,0}
+	\definecolor{purple}{RGB}{120,00,120}
+	\definecolor{gray}{RGB}{100,100,100}
+	\definecolor{mgreen}{RGB}{0,150,0}
+	\definecolor{dgreen}{RGB}{0,100,0}
+	\definecolor{llgray}{RGB}{230,230,230}
+	\definecolor{llred}{RGB}{237,228,228}
+	\definecolor{lgreen}{RGB}{100,200,100}
+	\definecolor{mgray}{RGB}{150,150,150}
+	\definecolor{lgray}{RGB}{190,190,190}
+	\definecolor{maroon}{RGB}{150,0,0}
+	\definecolor{lblue}{RGB}{120,170,200}
+	\definecolor{mblue}{RGB}{65,105,225}
+	\definecolor{dblue}{RGB}{0,56,111}
+	\definecolor{orange}{RGB}{255,165,0}
+	\definecolor{brown}{RGB}{177,84,15}
+	\definecolor{rose}{RGB}{135,0,52}
+	\definecolor{gold}{RGB}{177,146,87}
+	\definecolor{dred}{RGB}{135,19,19}
+	\definecolor{mred}{RGB}{194,28,28}
+	\newcommand{\edit}[1]{{\it{\color{gray}#1}}}
+	\newcommand{\fixme}[1]{{\color{maroon}\it{#1}}}
+	\newcommand{\citeme}[2][\!\!]{{\color{orange}[#2~\textit{#1}]}}
+	\newcommand{\later}[1]{{\color{dgreen}#1}}
+	\newcommand{\corr}[1]{{\color{red}\itshape #1}}
+	\newcommand{\question}[1]{\itshape{\color{blue}#1}\upshape}
+}
+\@ifundefined{substack}{}{
+    \newcommand{\attop}[1]{{\let\textstyle\scriptstyle\let\scriptstyle\scriptscriptstyle\substack{#1}}}
+    \renewcommand{\atop}[1]{{\let\scriptstyle\textstyle\let\scriptscriptstyle\scriptstyle\substack{#1}}}
+}
+
+
+\@ifundefined{devanagari}{\newcommand{\ta}{{\tt ta}}}{\newcommand{\ta}{\text{{\dn t}}}}
+
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\tabentry}[1]{\renewcommand{\arraystretch}{1}\begin{tabular}{c}#1\end{tabular}}
+
+
+\newcommand{\margin}[1]{\marginpar{\raggedright \scalefont{0.7}#1}} % requires scalefnt
+
+% require package pigpen and xy
+\newcommand{\pullback}{\ar@{}[rd]|<<{\text{\pigpenfont A}}}
+\newcommand{\pushout}{\ar@{}[rd]|>>{\text{\pigpenfont I}}}
+
+% requires xy
+% Somehow these don't work when placed earlier in the preamble. Maybe something
+% about the \makeatletter thing
+\newcommand{\longleftrightarrows}{\xymatrix@1@C=16pt{
+\ar@<0.4ex>[r] & \ar@<0.4ex>[l]
+}}
+\newcommand{\longrightrightarrows}{\xymatrix@1@C=16pt{
+\ar@<0.4ex>[r]\ar@<-0.4ex>[r] & 
+}}
+\newcommand{\mapstto}{\,\xymatrix@1@C=16pt{
+\ar@{|->}[r] & 
+}\,}
+\newcommand{\mapsttoo}[1]{\xymatrix@1@C=16pt{
+\ar@{|->}[r]^-{#1} & 
+}}
+\newcommand{\rightrightrightarrows}{\xymatrix@1@C=16pt{
+\ar[r]\ar@<0.8ex>[r]\ar@<-0.8ex>[r] & 
+}}
+\newcommand{\longleftleftarrows}{\xymatrix@C=16pt{
+ & \ar@<0.4ex>[l]\ar@<-0.4ex>[l]
+}}
+\newcommand{\leftleftleftarrows}{\xymatrix@1@C=16pt{
+ & \ar[l]\ar@<0.8ex>[l]\ar@<-0.8ex>[l]
+}}
+\newcommand{\leftleftleftleftarrows}{\xymatrix@1@C=16pt{
+ & \ar@<0.8ex>[l]\ar@<0.3ex>[l]\ar@<-0.3ex>[l]\ar@<-0.8ex>[l]
+}}
+\newcommand{\lcircle}{\ar@(ul,dl)} % arrow circle to the left of the node
+\newcommand{\rcircle}{\ar@(ur,dr)}
+\newcommand{\intto}{\ \xymatrix@1@C=16pt{
+\ar@{^(->}[r] & 
+}}
+
+\newcommand{\eva}[1]
+   {{\color{Periwinkle}\it #1}}
+\newcommand{\EvaNote}[1]
+   {\marginpar{\raggedright\smaller \smaller \color{Periwinkle}#1}}
+
+
+\makeatletter
+\newcommand{\switchmargin}{
+\if@reversemargin
+\normalmarginpar
+\else
+\reversemarginpar
+\fi
+}
+\makeatother
+\newcommand{\highlighteva}[1]{\ifmmode{\text{\sethlcolor{Lavender}\hl{$#1$}}}\else{\sethlcolor{Lavender}\hl{#1}}\fi}
+\newcommand{\EvaNoteHl}[2]{\marginnote{\smaller \smaller \color{Periwinkle}
+#2}{\highlighteva{#1}}\switchmargin}
+
+\newcommand\spoke{{\scaleobj{1.2}{\Yright}}}
+
+%  vim:ft=tex
